@@ -1,12 +1,17 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include <Image.hpp>
 #include <PortablePixelmap.hpp>
+#include <Vector3.hpp>
 
 void simpleImage1();
 void simpleImage2();
 
 int main() {
+
+    Vector3 v(1, 2, 3);
+    simpleImage2();
 
     return EXIT_SUCCESS;
 }
@@ -28,11 +33,11 @@ void simpleImage() {
     }
 }
 void simpleImage2() {
-    PortablePixelmap ppm(3, 2);
-    ppm.getData()[0]  = 255; ppm.getData()[1]  = 0;   ppm.getData()[2]  = 0;
-    ppm.getData()[3]  = 0;   ppm.getData()[4]  = 255; ppm.getData()[5]  = 0;
-    ppm.getData()[6]  = 255; ppm.getData()[7]  = 255; ppm.getData()[8]  = 0;
-    ppm.getData()[9]  = 0;   ppm.getData()[10] = 0;   ppm.getData()[11] = 0;
-    ppm.getData()[12] = 255; ppm.getData()[13] = 255; ppm.getData()[14] = 255;
-    ppm.store();
+    Image image(3, 2);
+    image.getData()[0]  = 255; image.getData()[1]  = 0;   image.getData()[2]  = 0;
+    image.getData()[3]  = 0;   image.getData()[4]  = 255; image.getData()[5]  = 0;
+    image.getData()[6]  = 255; image.getData()[7]  = 255; image.getData()[8]  = 0;
+    image.getData()[9]  = 0;   image.getData()[10] = 0;   image.getData()[11] = 0;
+    image.getData()[12] = 255; image.getData()[13] = 255; image.getData()[14] = 255;
+    PortablePixelmap::store(&image);
 }
