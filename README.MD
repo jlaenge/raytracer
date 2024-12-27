@@ -5,6 +5,7 @@ This project is an implementation of the [Raytracing in One Weekend](https://ray
 **Table Of Contents.**
 - [Build](#compile--run)
 - [Usage](#usage)
+- [Links](#links)
 
 ## Build
 
@@ -24,3 +25,7 @@ $ make
 
 ## Usage
 
+## Links
+
+- original [github](https://github.com/petershirley/raytracinginoneweekend) repository
+- [homepage](https://in1weekend.blogspot.com/)
