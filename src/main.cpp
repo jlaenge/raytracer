@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include <Screen.hpp>
 #include <Image.hpp>
 #include <PortablePixelmap.hpp>
 #include <Vector3.hpp>
@@ -10,8 +11,8 @@ void simpleImage2();
 
 int main() {
 
-    Vector3 v(1, 2, 3);
-    simpleImage2();
+    Screen s;
+    s.render();
 
     return EXIT_SUCCESS;
 }
