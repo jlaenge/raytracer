@@ -17,7 +17,7 @@ int main() {
     test();
 
     Raytracer rayTracer;
-    rayTracer.render();
+    //rayTracer.render();
 
     return EXIT_SUCCESS;
 }
