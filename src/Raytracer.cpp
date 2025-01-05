@@ -28,7 +28,7 @@ void Raytracer::render() {
     PortablePixelmap::store(&image);
 }
 
-float Raytracer::hitsSphere(const Vector3& center, float radius, const Ray& ray) {
+float Raytracer::hitsSphere(const Vector3& center, float radius, const Ray& ray) const {
     Vector3 origin_to_center = ray.origin() - center;
     float a = dot(ray.direction(), ray.direction());
     float b = 2.0 * dot(origin_to_center, ray.direction());
@@ -42,7 +42,7 @@ float Raytracer::hitsSphere(const Vector3& center, float radius, const Ray& ray)
     }
 }
 
-Vector3 Raytracer::color(const Ray& ray) {
+Vector3 Raytracer::color(const Ray& ray) const {
     static Vector3 v1(1, 1, 1);
     static Vector3 v2(0.5, 0.7, 1.0);
 

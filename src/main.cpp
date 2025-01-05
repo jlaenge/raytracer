@@ -13,7 +13,6 @@
 void test();
 
 int main() {
-
     test();
 
     Raytracer rayTracer;
