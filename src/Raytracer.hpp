@@ -1,16 +1,16 @@
-#ifndef SCREEN
-#define SCREEN
+#ifndef RAYTRACER
+#define RAYTRACER
 
 #include <Ray.hpp>
 #include <Vector3.hpp>
 
 #include <cstdint>
 
-class Screen {
+class Raytracer {
 
 public:
-    Screen() {}
-    virtual ~Screen() {}
+    Raytracer() {}
+    virtual ~Raytracer() {}
 
     void render();
 

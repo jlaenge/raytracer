@@ -1,6 +1,6 @@
 # Raytracer
 
-This project is an implementation of the [Raytracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) course.
+This project is my reimplementation of the [Raytracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) course.
 
 **Table Of Contents.**
 - [Build](#compile--run)
@@ -25,7 +25,14 @@ $ make
 
 ## Usage
 
+To run the raytracer and store the result as `image.ppm`, issue the following command:
+```
+$ raytracer > image.ppm
+```
+
+The result is stored as a [Portable Pixelmap (PPM)](https://de.wikipedia.org/wiki/Portable_Anymap#Pixmap).
+
 ## Links
 
-- original [github](https://github.com/petershirley/raytracinginoneweekend) repository
-- [homepage](https://in1weekend.blogspot.com/)
+- Original project [github](https://github.com/petershirley/raytracinginoneweekend)
+- Original project [homepage](https://in1weekend.blogspot.com/)

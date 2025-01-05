@@ -1,9 +1,9 @@
-#include <Screen.hpp>
+#include <Raytracer.hpp>
 
 #include <Image.hpp>
 #include <PortablePixelmap.hpp>
 
-void Screen::render() {
+void Raytracer::render() {
     Image image(kWidth, kHeight);
 
     Vector3 origin(0, 0, 0);
@@ -28,7 +28,7 @@ void Screen::render() {
     PortablePixelmap::store(&image);
 }
 
-bool Screen::hitsSphere(const Vector3& center, float radius, const Ray& ray) {
+bool Raytracer::hitsSphere(const Vector3& center, float radius, const Ray& ray) {
     Vector3 origin_to_center = ray.origin() - center;
     float a = dot(ray.direction(), ray.direction());
     float b = 2.0 * dot(origin_to_center, ray.direction());
@@ -37,7 +37,7 @@ bool Screen::hitsSphere(const Vector3& center, float radius, const Ray& ray) {
     return (discriminant > 0);
 }
 
-Vector3 Screen::color(const Ray& ray) {
+Vector3 Raytracer::color(const Ray& ray) {
     static Vector3 v1(1, 1, 1);
     static Vector3 v2(0.5, 0.7, 1.0);
 
