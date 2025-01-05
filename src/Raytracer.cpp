@@ -1,35 +1,39 @@
 #include <Raytracer.hpp>
 
+#include <Camera.hpp>
+#include <HitableList.hpp>
 #include <Image.hpp>
 #include <PortablePixelmap.hpp>
-
-#include <HitableList.hpp>
+#include <Random.hpp>
 #include <Sphere.hpp>
 
 void Raytracer::render() {
     Image image(kWidth, kHeight);
-
-    Vector3 origin(0, 0, 0);
-    Vector3 bottom_left(-2, -1, -1);
-    Vector3 horizontal(4, 0, 0);
-    Vector3 vertical(0, 2, 0);
 
     Sphere s1(Vector3(0, 0, -1), 0.5);
     Sphere s2(Vector3(0, -100.5, -1), 100);
     Hitable* list[] = { &s1, &s2 };
     HitableList world(list, 2);
 
+    Camera camera(Vector3(-2, -1, -1), Vector3(4, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0));
     float* data = image.getData();
     for(uint32_t y=0; y<kHeight; y++) {
         for(uint32_t x=0; x<kWidth; x++) {
-            float x_ = static_cast<float>(x) / static_cast<float>(kWidth);
-            float y_ = static_cast<float>(kHeight-y-1) / static_cast<float>(kHeight);
 
-            Ray ray(origin, bottom_left + x_ * horizontal + y_ * vertical);
-            Vector3 color_ = color(ray, world);
-            *data++ = color_.x();
-            *data++ = color_.y();
-            *data++ = color_.z();
+            Vector3 color_(0, 0, 0);
+            for(int s=0; s < kNumSamples; s++) {
+
+                float x_ = static_cast<float>(x+Random::getInstance()->getNext()) / static_cast<float>(kWidth);
+                float y_ = static_cast<float>(kHeight-y-1+Random::getInstance()->getNext()) / static_cast<float>(kHeight);
+
+                Ray ray = camera.getRay(x_, y_);
+                Vector3 point = ray.trace(2.0);
+                color_ += color(ray, world);
+            }
+
+                *data++ = color_.x();
+                *data++ = color_.y();
+                *data++ = color_.z();
             
         }
     }
