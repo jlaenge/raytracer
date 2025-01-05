@@ -15,10 +15,17 @@ public:
     inline float y() const { return y_; }
     inline float z() const { return z_; }
 
-    //inline void operator+=(const Vector3& v) { x_ += v.x_; y_ += v.y_; z_ += v.z_; }
-    //inline void operator-=(const Vector3& v) { x_ -= v.x_; y_ -= v.y_; z_ -= v.z_; }
-    //inline void operator*=(float f) { x_ *= f; y_ *= f; z_ *= f; }
-    //inline void operator/=(float f) { assert(f != 0); x_ /= f; y_ /= f; z_ /= f; }
+    Vector3 operator=(const Vector3& v) {
+        x_ = v.x_;
+        y_ = v.y_;
+        z_ = v.z_;
+        return *this;
+    }
+
+    inline void operator+=(const Vector3& v) { x_ += v.x_; y_ += v.y_; z_ += v.z_; }
+    inline void operator-=(const Vector3& v) { x_ -= v.x_; y_ -= v.y_; z_ -= v.z_; }
+    inline void operator*=(float f) { x_ *= f; y_ *= f; z_ *= f; }
+    inline void operator/=(float f) { assert(f != 0); x_ /= f; y_ /= f; z_ /= f; }
 
     inline Vector3 operator+(const Vector3& v) const { return Vector3(x_ + v.x_, y_ + v.y_, z_ + v.z_); }
     inline Vector3 operator-(const Vector3& v) const { return Vector3(x_ - v.x_, y_ - v.y_, z_ - v.z_); }
@@ -29,9 +36,9 @@ public:
     Vector3 make_unit() const;
 
 private:
-    const float x_;
-    const float y_;
-    const float z_;
+    float x_;
+    float y_;
+    float z_;
 
 };
 

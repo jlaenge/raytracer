@@ -1,15 +1,19 @@
 #ifndef SPHERE
 #define SPHERE
 
+#include <Hitable.hpp>
+#include <HitRecord.hpp>
 #include <Vector3.hpp>
 
-class Sphere {
+class Sphere : public Hitable {
 
 public:
     Sphere(Vector3 center, float radius) : center_(center), radius_(radius) {}
 
     Vector3 center() const { return center_; }
     float radius() const { return radius_; }
+
+    virtual HitRecord hit(const Ray& ray, float tmin, float tmax) const;
 
 private:
     const Vector3 center_;
