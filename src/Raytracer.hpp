@@ -18,7 +18,7 @@ private:
     const uint32_t kWidth = 200;
     const uint32_t kHeight = 100;
 
-    bool hitsSphere(const Vector3& center, float radius, const Ray& ray);
+    float hitsSphere(const Vector3& center, float radius, const Ray& ray);
 
     Vector3 color(const Ray& ray);
 

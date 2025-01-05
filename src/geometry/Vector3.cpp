@@ -2,8 +2,9 @@
 
 #include <cassert>
 
-void Vector3::make_unit_vector() {
+Vector3 Vector3::make_unit() const {
+    Vector3 result(*this);
     float len = length();
     assert(len != 0);
-    *this /= len;
+    return result;
 }

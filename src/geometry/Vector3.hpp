@@ -25,8 +25,8 @@ public:
     inline Vector3 operator*(float f) const { return Vector3(x_ * f, y_ * f, z_ * f); }
     inline Vector3 operator/(float f) const { assert(f != 0); return Vector3(x_ / f, y_ / f, z_ / f); }
 
-    inline float length() { return static_cast<float>(sqrt(x_*x_ + y_*y_ + z_*z_)); }
-    void make_unit_vector();
+    inline float length() const { return static_cast<float>(sqrt(x_*x_ + y_*y_ + z_*z_)); }
+    Vector3 make_unit() const;
 
 private:
     float x_;
