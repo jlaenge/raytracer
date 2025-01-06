@@ -7,6 +7,8 @@
 
 #include <cstdint>
 
+typedef Vector3 (*GammaCorrection)(Vector3);
+
 class Raytracer {
 
 public:
@@ -20,6 +22,10 @@ private:
     const uint32_t kHeight = 100;
     const uint32_t kNumSamples = 100;
 
+    const GammaCorrection kGammaCorrection = Raytracer::gammaSqrt;
+    static Vector3 gammaSqrt(Vector3 v);
+
+    Vector3 randomInUnitSphere() const;
     Vector3 color(const Ray& ray, const Hitable& world) const;
 
 };

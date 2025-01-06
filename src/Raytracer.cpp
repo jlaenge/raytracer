@@ -31,6 +31,7 @@ void Raytracer::render() {
                 color_ += color(ray, world);
             }
             color_ /= static_cast<float>(kNumSamples);
+            color_ = kGammaCorrection(color_);
             *data++ = color_.x();
             *data++ = color_.y();
             *data++ = color_.z();
@@ -38,6 +39,19 @@ void Raytracer::render() {
         }
     }
     PortablePixelmap::store(&image);
+}
+
+Vector3 Raytracer::gammaSqrt(Vector3 v) {
+    return Vector3(sqrt(v.x()), sqrt(v.y()), sqrt(v.z()));
+}
+
+Vector3 Raytracer::randomInUnitSphere() const {
+    Vector3 point;
+    do {
+        Vector3 randomPoint(Random::getInstance()->getNext(), Random::getInstance()->getNext(), Random::getInstance()->getNext());
+        point = (2 * randomPoint) - Vector3(1, 1, 1);
+    } while(point.length() * point.length() >= 1);
+    return point;
 }
 
 Vector3 Raytracer::color(const Ray& ray, const Hitable& world) const {
@@ -49,7 +63,8 @@ Vector3 Raytracer::color(const Ray& ray, const Hitable& world) const {
 
     HitRecord record = world.hit(ray, 0, MAXFLOAT);
     if(record.hit()) {
-        return 0.5 * Vector3(record.normal() + Vector3(1, 1, 1));
+        Vector3 target = record.point() + record.normal() + randomInUnitSphere();
+        return 0.5 * color(Ray(record.point(), target-record.point()), world);
     } else {
         Vector3 direction = ray.direction().make_unit();
         float t = 0.5 * (direction.y() + 1.0);
