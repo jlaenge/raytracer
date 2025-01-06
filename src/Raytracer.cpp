@@ -30,10 +30,10 @@ void Raytracer::render() {
                 Vector3 point = ray.trace(2.0);
                 color_ += color(ray, world);
             }
-
-                *data++ = color_.x();
-                *data++ = color_.y();
-                *data++ = color_.z();
+            color_ /= static_cast<float>(kNumSamples);
+            *data++ = color_.x();
+            *data++ = color_.y();
+            *data++ = color_.z();
             
         }
     }
