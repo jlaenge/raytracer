@@ -61,7 +61,7 @@ Vector3 Raytracer::color(const Ray& ray, const Hitable& world) const {
     static Vector3 circleCenter(0, 0, -1);
     static float circleRadius = 0.5;
 
-    HitRecord record = world.hit(ray, 0, MAXFLOAT);
+    HitRecord record = world.hit(ray, ktMin, ktMax);
     if(record.hit()) {
         Vector3 target = record.point() + record.normal() + randomInUnitSphere();
         return 0.5 * color(Ray(record.point(), target-record.point()), world);

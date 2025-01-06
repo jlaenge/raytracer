@@ -22,6 +22,9 @@ private:
     const uint32_t kHeight = 100;
     const uint32_t kNumSamples = 100;
 
+    const float ktMin = 0.001;
+    const float ktMax = MAXFLOAT;
+
     const GammaCorrection kGammaCorrection = Raytracer::gammaSqrt;
     static Vector3 gammaSqrt(Vector3 v);
 
