@@ -1,6 +1,6 @@
 # Raytracer
 
-This project is my reimplementation of the [Raytracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) course.
+This project is my reimplementation of the [Raytracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) course. I followed the [Ray Tracing in a Weekend.pdf](./Ray%20Tracing%20in%20a%20Weekend.pdf).
 
 **Table Of Contents.**
 - [Build](#compile--run)
