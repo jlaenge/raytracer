@@ -30,7 +30,7 @@ To run the raytracer and store the result as `image.ppm`, issue the following co
 $ raytracer > image.ppm
 ```
 
-The result is stored as a [Portable Pixelmap (PPM)](https://de.wikipedia.org/wiki/Portable_Anymap#Pixmap).
+The resulting image is stored as a [Portable Pixelmap (PPM)](https://de.wikipedia.org/wiki/Portable_Anymap#Pixmap).
 
 ## Links
 
