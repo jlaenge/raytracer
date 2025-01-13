@@ -1,3 +1,13 @@
+/******************************************************************************\
+ * 
+ * IMAGE
+ * 
+ * The Image class manages an image with its individual color values. More
+ * precisely, an image has a width, height and color-dimension. The color values
+ * of the image are stored as float (0.0-1.0) consecutively in memory.
+ * 
+\******************************************************************************/
+
 #ifndef IMAGE
 #define IMAGE
 

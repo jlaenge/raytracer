@@ -1,3 +1,16 @@
+/******************************************************************************\
+ * 
+ * TESTS
+ * 
+ * The Tests class bundles all tests of the project. They can be registered via
+ * the registerTests() method and then run via runAll(). In case of a test
+ * failure an assertion violation is raised.
+ * 
+ * Note: The number of tests is limited via the kMaxTestSuites parameter. In
+ * case this limit is surpassed, the parameter needs to be updated.
+ * 
+\******************************************************************************/
+
 #ifndef TESTS
 #define TESTS
 
