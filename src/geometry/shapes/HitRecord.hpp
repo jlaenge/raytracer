@@ -1,3 +1,16 @@
+/******************************************************************************\
+ * 
+ * HITRECORD
+ * 
+ * The HitRecord is a container for all the parameters computed during a
+ * collision between a ray and a hitable. In particular, it tracks:
+ * - if a collsion took place,
+ * - at what time t the collision took place,
+ * - at what point in 3D space the collision took place and
+ * - the surface normal of the hitable at the collision point
+ * 
+\******************************************************************************/
+
 #ifndef HIT_RECORD
 #define HIT_RECORD
 

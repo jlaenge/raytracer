@@ -1,3 +1,11 @@
+/******************************************************************************\
+ * 
+ * SPHERE
+ * 
+ * The Sphere class implements a hitable. A sphere has a center and a radius.
+ * 
+\******************************************************************************/
+
 #ifndef SPHERE
 #define SPHERE
 

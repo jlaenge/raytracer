@@ -1,3 +1,12 @@
+/******************************************************************************\
+ * 
+ * MAIN
+ * 
+ * The main logic is implemented in the Raytracer class. The main function in
+ * this file only creates an instance of the Raytracer and invokes its render()
+ * function.
+ * 
+\******************************************************************************/
 #include <Tests.hpp>
 #include <ImageTest.hpp>
 #include <PortablePixelmapTest.hpp>
@@ -21,6 +30,11 @@ int main() {
     return EXIT_SUCCESS;
 }
 
+/**
+ * Simple testing function. As the images are output via stdout, only one test
+ * can run at a given time and the program can only either test or run the
+ * current scene.
+ */
 void test() {
     fprintf(stderr, "Testing...\n");
 

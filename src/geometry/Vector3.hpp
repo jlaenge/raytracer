@@ -1,3 +1,12 @@
+/******************************************************************************\
+ * 
+ * Vector3
+ * 
+ * The Vector3 class implements a 3D vector. It contains the standard methods
+ * for addition, substraction, etc. that are required for the ray trace.
+ * 
+\******************************************************************************/
+
 #ifndef VECTOR3
 #define VECTOR3
 

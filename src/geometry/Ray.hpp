@@ -1,3 +1,12 @@
+/******************************************************************************\
+ * 
+ * RAY
+ * 
+ * A ray has an origin and a direction. The most essential method of the class
+ * is the trace(), which computes the points on the ray at a given time.
+ * 
+\******************************************************************************/
+
 #ifndef RAY
 #define RAY
 
