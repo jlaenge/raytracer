@@ -52,7 +52,6 @@ private:
 };
 
 inline Vector3 operator*(float f, const Vector3& v) { return Vector3(f * v.x(), f* v.y(), f * v.z()); }
-inline Vector3 operator/(float f, const Vector3& v) { assert(f != 0); return Vector3(f / v.x(), f / v.y(), f / v.z()); }
 
 inline float dot(const Vector3& v1, const Vector3& v2) {
     return v1.x()*v2.x() + v1.y()*v2.y() + v1.z()*v2.z();
