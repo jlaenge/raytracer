@@ -10,6 +10,7 @@
 #include <Tests.hpp>
 #include <ImageTest.hpp>
 #include <PortablePixelmapTest.hpp>
+#include <RayTest.hpp>
 #include <Vector3Test.hpp>
 
 #include <Image.hpp>
@@ -44,6 +45,7 @@ void test() {
     //tests.registerTests(ImageTest::getInstance());
     //tests.registerTests(PortablePixelmapTest::getInstance());
     tests.registerTests(Vector3Test::getInstance());
+    tests.registerTests(RayTest::getInstance());
 
     fprintf(stderr, "\tRunning tests...\n");
     tests.runAll();

@@ -23,8 +23,8 @@ public:
     Vector3 trace(float t) const { return origin_ + t * direction_; }
 
 private:
-    Vector3 origin_;
-    Vector3 direction_;
+    const Vector3 origin_;
+    const Vector3 direction_;
 
 };
 
