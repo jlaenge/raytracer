@@ -19,6 +19,13 @@ class TestSuite {
 public:
     virtual void run() = 0;
 
+    static void floatEqual(float a, float b) {
+        assert(a-epsilon <= b && b <= a+epsilon);
+    }
+
+private:
+    static constexpr float epsilon = 0.0001;
+
 };
 
 #endif
