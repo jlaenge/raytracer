@@ -20,7 +20,7 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 # compiler flags
 CFLAGE :=
-CPPFLAGS := $(INC_FLAGS)
+CPPFLAGS := -g $(INC_FLAGS)
 
 # The final build step.
 ./$(TARGET_EXEC): $(OBJS)
