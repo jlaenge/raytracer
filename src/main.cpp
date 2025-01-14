@@ -8,6 +8,7 @@
  * 
 \******************************************************************************/
 #include <Tests.hpp>
+#include <HitRecordTest.hpp>
 #include <ImageTest.hpp>
 #include <PortablePixelmapTest.hpp>
 #include <RayTest.hpp>
@@ -46,6 +47,7 @@ void test() {
     //tests.registerTests(PortablePixelmapTest::getInstance());
     tests.registerTests(Vector3Test::getInstance());
     tests.registerTests(RayTest::getInstance());
+    tests.registerTests(HitRecordTest::getInstance());
 
     fprintf(stderr, "\tRunning tests...\n");
     tests.runAll();
