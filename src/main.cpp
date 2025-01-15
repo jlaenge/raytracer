@@ -25,11 +25,20 @@
 
 void test();
 
-int main() {
+int main(int argc, char** argv) {
     test();
 
+    FILE* outfile = stdout;
+    if(argc >= 2) {
+        char* filename = argv[1];
+        outfile = fopen(filename, "w");
+    }
+
     Raytracer rayTracer;
-    rayTracer.render();
+    rayTracer.render(outfile);
+
+    fflush(outfile);
+    fclose(outfile);
 
     return EXIT_SUCCESS;
 }

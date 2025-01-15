@@ -12,6 +12,8 @@
 
 #include <Image.hpp>
 
+#include <cstdio>
+
 class PortablePixelmap {
 
 public:
@@ -19,7 +21,7 @@ public:
     /**
      * Outputs the given image in the PPM format to stdout.
      */
-    static void store(Image* image);
+    static void store(Image* image, FILE* destination);
 
 };
 

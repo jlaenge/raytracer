@@ -19,6 +19,7 @@
 #include <Vector3.hpp>
 
 #include <cstdint>
+#include <cstdio>
 
 typedef Vector3 (*GammaCorrection)(Vector3);
 
@@ -29,9 +30,9 @@ public:
     virtual ~Raytracer() {}
 
     /**
-     * 
+     * Renders the scene to the given file.
      */
-    void render();
+    void render(FILE* destination);
 
 private:
     // image width and height, and number of rays shot for every pixel

@@ -10,7 +10,7 @@
 #include <Random.hpp>
 #include <Sphere.hpp>
 
-void Raytracer::render() {
+void Raytracer::render(FILE* destination) {
     Image image(kWidth, kHeight);
     HitableList& world = world1();
 
@@ -37,7 +37,7 @@ void Raytracer::render() {
             
         }
     }
-    PortablePixelmap::store(&image);
+    PortablePixelmap::store(&image, destination);
 }
 
 Vector3 Raytracer::gammaSqrt(Vector3 v) {

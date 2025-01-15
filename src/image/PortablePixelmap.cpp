@@ -1,12 +1,11 @@
 #include <PortablePixelmap.hpp>
 
 #include <cassert>
-#include <cstdio>
 
-void PortablePixelmap::store(Image* image) {
+void PortablePixelmap::store(Image* image, FILE* destination) {
     int status = 0;
 
-    status = printf("P3\n%u %u\n255\n", image->getWidth(), image->getHeight());
+    status = fprintf(destination, "P3\n%u %u\n255\n", image->getWidth(), image->getHeight());
     assert(status != 0);
 
     float* data = image->getData();
@@ -19,7 +18,7 @@ void PortablePixelmap::store(Image* image) {
             uint8_t ir = static_cast<uint8_t>(255.99 * fr);
             uint8_t ig = static_cast<uint8_t>(255.99 * fg);
             uint8_t ib = static_cast<uint8_t>(255.99 * fb);
-            printf("%d %d %d\n", ir, ig, ib);
+            fprintf(destination, "%d %d %d\n", ir, ig, ib);
         }
     }
 }

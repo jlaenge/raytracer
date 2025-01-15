@@ -26,9 +26,18 @@ $ make
 
 ## Usage
 
-To run the raytracer and store the result as `image.ppm`, issue the following command:
+In its simplest form, the raytracer can be run without and arguments as follows:
+```
+$ raytracer
+```
+In this case, the image data is dumped to `STANDARD OUTPUT`. To store the resulting image, this output can be piped into a file as follows:
 ```
 $ raytracer > image.ppm
+```
+
+Alternatively, the program can be run with the destination file as a command line argument as follows:
+```
+$ raytracer image.ppm
 ```
 
 The resulting image is stored as a [Portable Pixelmap (PPM)](https://de.wikipedia.org/wiki/Portable_Anymap#Pixmap). I used the [PPM View Extension](https://marketplace.visualstudio.com/items?itemName=jtlehtinen.vscode-ppm-view) for VS Code to display the resulting images. Alternatively, the `/images` folder contains a script for converting the `*.ppm` images in that folder to `*.jpg`. Simply copy the `*.ppm` image into that folder and run the conversion script:

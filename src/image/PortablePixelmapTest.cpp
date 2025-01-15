@@ -16,5 +16,5 @@ void PortablePixelmapTest::run() {
     image.getData()[9]  = 1; image.getData()[10] = 1; image.getData()[11] = 0;
     image.getData()[12] = 1; image.getData()[13] = 1; image.getData()[14] = 1;
     image.getData()[15] = 0; image.getData()[16] = 0; image.getData()[17] = 0;
-    PortablePixelmap::store(&image);
+    PortablePixelmap::store(&image, stdout);
 }
