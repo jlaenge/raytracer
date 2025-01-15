@@ -45,7 +45,7 @@ private:
     const float ktMin = 0.001;
     const float ktMax = MAXFLOAT;
 
-    HitableList& world = world1();ll
+    HitableList& world = world1();
 
     // gamma correction function
     const GammaCorrection kGammaCorrection = Raytracer::gammaSqrt;
