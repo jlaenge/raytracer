@@ -33,11 +33,14 @@ public:
 
     inline void operator+=(const Vector3& v) { x_ += v.x_; y_ += v.y_; z_ += v.z_; }
     inline void operator-=(const Vector3& v) { x_ -= v.x_; y_ -= v.y_; z_ -= v.z_; }
+    inline void operator*=(const Vector3& v) { x_ *= v.x_; y_ *= v.y_; z_ *= v.z_; }
+    
     inline void operator*=(float f) { x_ *= f; y_ *= f; z_ *= f; }
     inline void operator/=(float f) { assert(f != 0); x_ /= f; y_ /= f; z_ /= f; }
 
     inline Vector3 operator+(const Vector3& v) const { return Vector3(x_ + v.x_, y_ + v.y_, z_ + v.z_); }
     inline Vector3 operator-(const Vector3& v) const { return Vector3(x_ - v.x_, y_ - v.y_, z_ - v.z_); }
+    inline Vector3 operator*(const Vector3& v) const { return Vector3(x_ * v.x_, y_ * v.y_, z_ * v.z_); }
     inline Vector3 operator*(float f) const { return Vector3(x_ * f, y_ * f, z_ * f); }
     inline Vector3 operator/(float f) const { assert(f != 0); return Vector3(x_ / f, y_ / f, z_ / f); }
 

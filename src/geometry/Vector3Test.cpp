@@ -82,6 +82,16 @@ void Vector3Test::testOperatorAssignment() {
     TestSuite::floatEqual(v6.x(), 0.5);
     TestSuite::floatEqual(v6.y(), 1);
     TestSuite::floatEqual(v6.z(), 1.5);
+
+    Vector3 v7(1, 2, 3);
+    Vector3 v8(4, 5, 6);
+    v7 *= v8;
+    TestSuite::floatEqual(v7.x(), 4);
+    TestSuite::floatEqual(v7.y(), 10);
+    TestSuite::floatEqual(v7.z(), 18);
+    TestSuite::floatEqual(v8.x(), 4);
+    TestSuite::floatEqual(v8.y(), 5);
+    TestSuite::floatEqual(v8.z(), 6);
 }
 
 void Vector3Test::testOperatorConstructor() {
@@ -128,6 +138,19 @@ void Vector3Test::testOperatorConstructor() {
     TestSuite::floatEqual(v10.x(), 0.5);
     TestSuite::floatEqual(v10.y(), 1);
     TestSuite::floatEqual(v10.z(), 1.5);
+
+    Vector3 v11(1, 2, 3);
+    Vector3 v12(4, 5, 6);
+    Vector3 v13 = v11 * v12;
+    TestSuite::floatEqual(v11.x(), 1);
+    TestSuite::floatEqual(v11.y(), 2);
+    TestSuite::floatEqual(v11.z(), 3);
+    TestSuite::floatEqual(v12.x(), 4);
+    TestSuite::floatEqual(v12.y(), 5);
+    TestSuite::floatEqual(v12.z(), 6);
+    TestSuite::floatEqual(v13.x(), 4);
+    TestSuite::floatEqual(v13.y(), 10);
+    TestSuite::floatEqual(v13.z(), 18);
 }
 
 void Vector3Test::testLength() {
