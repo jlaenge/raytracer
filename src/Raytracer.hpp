@@ -14,6 +14,7 @@
 #define RAYTRACER
 
 #include <Hitable.hpp>
+#include <HitableList.hpp>
 #include <Ray.hpp>
 #include <Vector3.hpp>
 
@@ -51,6 +52,9 @@ private:
      * Computes the color for a given ray in a world of hitable objects.
      */
     Vector3 color(const Ray& ray, const Hitable& world, int depth) const;
+
+    // worlds to test with
+    HitableList& world1();
 
 };
 

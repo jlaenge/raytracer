@@ -12,18 +12,7 @@
 
 void Raytracer::render() {
     Image image(kWidth, kHeight);
-
-    Lambertian l1(Vector3(0.8, 0.3, 0.3));
-    Lambertian l2(Vector3(0.8, 0.8, 0.0));
-    Metal m1(Vector3(0.8, 0.6, 0.2));
-    Metal m2(Vector3(0.8, 0.8, 0.8));
-    Sphere s1(Vector3(0, 0, -1), 0.5, &l1);
-    Sphere s2(Vector3(0, -100.5, -1), 100, &l2);
-    Sphere s3(Vector3(1, 0, -1), 0.5,  &m1);
-    Sphere s4(Vector3(-1, 0, -1), 0.5, &m2);
-
-    Hitable* list[] = { &s1, &s2, &s3, &s4 };
-    HitableList world(list, 4);
+    HitableList& world = world1();
 
     Camera camera(Vector3(-2, -1, -1), Vector3(4, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0));
     float* data = image.getData();
@@ -76,4 +65,19 @@ Vector3 Raytracer::color(const Ray& ray, const Hitable& world, int depth) const 
         float t = 0.5 * (direction.y() + 1.0);
         return ((1.0-t)*v1 + t*v2);
     }
+}
+
+HitableList& Raytracer::world1() {
+    static Lambertian l1(Vector3(0.8, 0.3, 0.3));
+    static Lambertian l2(Vector3(0.8, 0.8, 0.0));
+    static Metal m1(Vector3(0.8, 0.6, 0.2));
+    static Metal m2(Vector3(0.8, 0.8, 0.8));
+    static Sphere s1(Vector3(0, 0, -1), 0.5, &l1);
+    static Sphere s2(Vector3(0, -100.5, -1), 100, &l2);
+    static Sphere s3(Vector3(1, 0, -1), 0.5,  &m1);
+    static Sphere s4(Vector3(-1, 0, -1), 0.5, &m2);
+
+    static Hitable* list[] = { &s1, &s2, &s3, &s4 };
+    static HitableList world(list, 4);
+    return world;
 }
