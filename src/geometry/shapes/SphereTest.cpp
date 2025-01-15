@@ -1,5 +1,6 @@
 #include <SphereTest.hpp>
 
+#include <Lambertian.hpp>
 #include <Sphere.hpp>
 
 #include <cstdio>
@@ -15,17 +16,20 @@ void SphereTest::run() {
 }
 
 void SphereTest::testAttributes() {
-    Sphere s(Vector3(1, 2, 3), 42);
+    Material* m = new Lambertian(Vector3(1, 2, 3));
+    Sphere s(Vector3(1, 2, 3), 42, m);
     Vector3 c = s.center();
     TestSuite::floatEqual(c.x(), 1);
     TestSuite::floatEqual(c.y(), 2);
     TestSuite::floatEqual(c.z(), 3);
     TestSuite::floatEqual(s.radius(), 42);
+    assert(s.material() == m);
+    free(m);
 }
 
 void SphereTest::testHit() {
     Ray r(Vector3(0, 0, 0), Vector3(0, 0, 1));
-    Sphere s(Vector3(0, 0, 10), 0.5);
+    Sphere s(Vector3(0, 0, 10), 0.5, nullptr);
     HitRecord rec = s.hit(r, 0, 100);
     assert(rec.hit());
     TestSuite::floatEqual(rec.t(), 9.5);

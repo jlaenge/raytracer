@@ -23,7 +23,7 @@ HitRecord Sphere::hit(const Ray& ray, float tmin, float tmax) const {
         float t = tmp;
         Vector3 point = ray.trace(t);
         Vector3 normal = (point - center_) / radius_;
-        return HitRecord(t, point, normal);
+        return HitRecord(t, point, normal, material_);
     }
 
     return HitRecord();

@@ -3,6 +3,9 @@
 #include <Camera.hpp>
 #include <HitableList.hpp>
 #include <Image.hpp>
+#include <Lambertian.hpp>
+#include <Material.hpp>
+#include <Metal.hpp>
 #include <PortablePixelmap.hpp>
 #include <Random.hpp>
 #include <Sphere.hpp>
@@ -10,10 +13,17 @@
 void Raytracer::render() {
     Image image(kWidth, kHeight);
 
-    Sphere s1(Vector3(0, 0, -1), 0.5);
-    Sphere s2(Vector3(0, -100.5, -1), 100);
-    Hitable* list[] = { &s1, &s2 };
-    HitableList world(list, 2);
+    Lambertian l1(Vector3(0.8, 0.3, 0.3));
+    Lambertian l2(Vector3(0.8, 0.8, 0.0));
+    Metal m1(Vector3(0.8, 0.6, 0.2));
+    Metal m2(Vector3(0.8, 0.8, 0.8));
+    Sphere s1(Vector3(0, 0, -1), 0.5, &l1);
+    Sphere s2(Vector3(0, -100.5, -1), 100, &l2);
+    Sphere s3(Vector3(1, 0, -1), 0.5,  &m1);
+    Sphere s4(Vector3(-1, 0, -1), 0.5, &m2);
+
+    Hitable* list[] = { &s1, &s2, &s3, &s4 };
+    HitableList world(list, 4);
 
     Camera camera(Vector3(-2, -1, -1), Vector3(4, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0));
     float* data = image.getData();
@@ -28,7 +38,7 @@ void Raytracer::render() {
 
                 Ray ray = camera.getRay(x_, y_);
                 Vector3 point = ray.trace(2.0);
-                color_ += color(ray, world);
+                color_ += color(ray, world, 0);
             }
             color_ /= static_cast<float>(kNumSamples);
             color_ = kGammaCorrection(color_);
@@ -45,17 +55,22 @@ Vector3 Raytracer::gammaSqrt(Vector3 v) {
     return Vector3(sqrt(v.x()), sqrt(v.y()), sqrt(v.z()));
 }
 
-Vector3 Raytracer::color(const Ray& ray, const Hitable& world) const {
-    static Vector3 v1(1, 1, 1);
-    static Vector3 v2(0.5, 0.7, 1.0);
+Vector3 Raytracer::color(const Ray& ray, const Hitable& world, int depth) const {
+    static const Vector3 v1(1, 1, 1);
+    static const Vector3 v2(0.5, 0.7, 1.0);
 
-    static Vector3 circleCenter(0, 0, -1);
-    static float circleRadius = 0.5;
+    static const Vector3 circleCenter(0, 0, -1);
+    static const float circleRadius = 0.5;
 
     HitRecord record = world.hit(ray, ktMin, ktMax);
     if(record.hit()) {
-        Vector3 target = record.point() + record.normal() + Random::getInstance()->randomInUnitSphere();
-        return 0.5 * color(Ray(record.point(), target-record.point()), world);
+        Ray scattered;
+        Vector3 attenuation;
+        if(depth < kMaxDepth && record.material()->scatter(ray, record, attenuation, scattered)) {
+            return attenuation * color(scattered, world, depth+1);
+        } else {
+            return Vector3();
+        }
     } else {
         Vector3 direction = ray.direction().make_unit();
         float t = 0.5 * (direction.y() + 1.0);

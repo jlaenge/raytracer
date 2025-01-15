@@ -38,6 +38,8 @@ private:
     const uint32_t kHeight = 100;
     const uint32_t kNumSamples = 100;   // careful with incrementing this parameter, as it slows down the rendering significantly
 
+    const uint32_t kMaxDepth = 50;
+
     const float ktMin = 0.001;
     const float ktMax = MAXFLOAT;
 
@@ -48,7 +50,7 @@ private:
     /**
      * Computes the color for a given ray in a world of hitable objects.
      */
-    Vector3 color(const Ray& ray, const Hitable& world) const;
+    Vector3 color(const Ray& ray, const Hitable& world, int depth) const;
 
 };
 
