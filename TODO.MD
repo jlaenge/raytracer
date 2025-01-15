@@ -4,7 +4,6 @@
 - [Output](#output)
 - [Tests](#tests)
 - [Optimization](#optimization)
-- [Package Structure](#package-structure)
 
 ## Output
 
