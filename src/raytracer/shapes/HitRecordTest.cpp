@@ -1,6 +1,7 @@
 #include <HitRecordTest.hpp>
 
 #include <HitRecord.hpp>
+#include <Logger.hpp>
 
 HitRecordTest HitRecordTest::instance;
 HitRecordTest* HitRecordTest::getInstance() {
@@ -8,8 +9,10 @@ HitRecordTest* HitRecordTest::getInstance() {
 }
 
 void HitRecordTest::run() {
+    LOG_DEBUG("\tTesting HitRecord...");
     testNoHit();
     testHit();
+    LOG_DEBUG("[passed]\n");
 }
 
 void HitRecordTest::testNoHit() {

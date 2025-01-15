@@ -16,23 +16,31 @@
 #include <Vector3Test.hpp>
 
 #include <Image.hpp>
+#include <Logger.hpp>
 #include <PortablePixelmap.hpp>
 #include <Raytracer.hpp>
 #include <Vector3.hpp>
 
+#include <cassert>
 #include <cstdio>
 #include <cstdlib>
 
 void test();
 
 int main(int argc, char** argv) {
+
+    Logger::getInstance()->init(kINFO, stdout);
+
     test();
 
-    FILE* outfile = stdout;
-    if(argc >= 2) {
-        char* filename = argv[1];
-        outfile = fopen(filename, "w");
+    if(argc != 2) {
+        LOG_ERROR("Invalid number of parameters. Usage: %s [OUTPUT_FILE.ppm]\n", argv[0]);
+        return EXIT_FAILURE;
     }
+
+    char* filename = argv[1];
+    FILE* outfile = fopen(filename, "w");
+    assert(outfile != nullptr);
 
     Raytracer rayTracer;
     rayTracer.render(outfile);
@@ -49,9 +57,9 @@ int main(int argc, char** argv) {
  * current scene.
  */
 void test() {
-    fprintf(stderr, "Testing...\n");
+    LOG_DEBUG("Testing...\n");
 
-    fprintf(stderr, "\tRegistering tests...\n");
+    LOG_DEBUG("\tRegistering tests...\n");
     Tests tests;
     //tests.registerTests(ImageTest::getInstance());
     //tests.registerTests(PortablePixelmapTest::getInstance());
@@ -60,8 +68,8 @@ void test() {
     tests.registerTests(HitRecordTest::getInstance());
     tests.registerTests(SphereTest::getInstance());
 
-    fprintf(stderr, "\tRunning tests...\n");
+    LOG_DEBUG("\tRunning tests...\n");
     tests.runAll();
 
-    fprintf(stderr, "\tAll tests passed!\n");
+    LOG_DEBUG("All tests passed!\n");
 }

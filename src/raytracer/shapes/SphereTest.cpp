@@ -1,6 +1,7 @@
 #include <SphereTest.hpp>
 
 #include <Lambertian.hpp>
+#include <Logger.hpp>
 #include <Sphere.hpp>
 
 #include <cstdio>
@@ -11,8 +12,10 @@ SphereTest* SphereTest::getInstance() {
 }
 
 void SphereTest::run() {
+    LOG_DEBUG("\tTesting Sphere...");
     testAttributes();
     testHit();
+    LOG_DEBUG("[passed]\n");
 }
 
 void SphereTest::testAttributes() {

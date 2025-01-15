@@ -26,6 +26,8 @@ $ make
 
 ## Usage
 
+[!WARNING] This usage is now depricated! Please refer to the command line arguments below. [!WARNING]
+
 In its simplest form, the raytracer can be run without and arguments as follows:
 ```
 $ raytracer

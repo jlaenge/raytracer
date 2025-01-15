@@ -1,5 +1,6 @@
 #include <RayTest.hpp>
 
+#include <Logger.hpp>
 #include <Ray.hpp>
 
 RayTest RayTest::instance;
@@ -8,9 +9,11 @@ RayTest* RayTest::getInstance() {
 }
 
 void RayTest::run() {
+    LOG_DEBUG("\tTesting Ray...");
     testAttributes();
     testAssignment();
     testTrace();
+    LOG_DEBUG("[passed]\n");
 }
 
 void RayTest::testAttributes() {

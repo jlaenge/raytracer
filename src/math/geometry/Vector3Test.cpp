@@ -1,5 +1,6 @@
 #include <Vector3Test.hpp>
 
+#include <Logger.hpp>
 #include <Vector3.hpp>
 
 Vector3Test Vector3Test::instance;
@@ -8,6 +9,7 @@ Vector3Test* Vector3Test::getInstance() {
 }
 
 void Vector3Test::run() {
+    LOG_DEBUG("\tTesting Vector3...");
     testAttributes();
     testAssignment();
     testOperatorAssignment();
@@ -16,6 +18,7 @@ void Vector3Test::run() {
     testMakeUnit();
     testOperatorRHS();
     testDotAndCross();
+    LOG_DEBUG("[passed]\n");
 }
 
 void Vector3Test::testAttributes() {

@@ -84,8 +84,8 @@ HitableList& Raytracer::world1() {
 HitableList& Raytracer::world2() {
     static Lambertian l1(Vector3(0.8, 0.3, 0.3));
     static Metal m1(Vector3(0.8, 0.6, 0.2));
-    static Sphere s1(Vector3(0, 0, -1), 0.5, &l1);
-    static Sphere s2(Vector3(0, -100.5, -1), 100, &m1);
+    static Sphere s1(Vector3(0, -100.5, -1), 100, &l1);
+    static Sphere s2(Vector3(0, 0, -1), 0.5, &m1);
 
     static Hitable* list[] = { &s1, &s2 };
     static HitableList world(list, 2);
