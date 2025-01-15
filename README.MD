@@ -90,3 +90,7 @@ Note the shadow below the sphere. It is a bit difficult to spot on this image bu
 **Gamma-Correction.** The diffuse image is very dark, as it is not yet gamma corrected. We implement a gamme correction by computing the square-root of the color values.
 
 ![image_08](images/image_08.jpg)
+
+**Surface Materials.** To implement different surface textures we introduce the `material` interface with the abstract method `scatter()`. It specifies how rays are reflected when hitting the surface. We implement a highly reflective `metal` surface and a dull `lambertian` surface.
+
+![image_09](images/image_09.jpg)
