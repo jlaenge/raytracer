@@ -18,13 +18,18 @@ public:
     Ray(const Vector3& origin, const Vector3& direction) : origin_(origin), direction_(direction) {}
     virtual ~Ray() {}
 
+    void operator=(const Ray& r) {
+        origin_ = r.origin();
+        direction_ = r.direction();
+    }
+
     Vector3 origin() const { return origin_; }
     Vector3 direction() const { return direction_; }
     Vector3 trace(float t) const { return origin_ + t * direction_; }
 
 private:
-    const Vector3 origin_;
-    const Vector3 direction_;
+    Vector3 origin_;
+    Vector3 direction_;
 
 };
 

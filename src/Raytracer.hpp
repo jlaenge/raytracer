@@ -46,12 +46,6 @@ private:
     static Vector3 gammaSqrt(Vector3 v);
 
     /**
-     * Computes a random vector on the unit sphere. This function is used for
-     * diffuse materials, to compute the outgoing ray.
-     */
-    Vector3 randomInUnitSphere() const;
-
-    /**
      * Computes the color for a given ray in a world of hitable objects.
      */
     Vector3 color(const Ray& ray, const Hitable& world) const;

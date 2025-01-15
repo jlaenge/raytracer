@@ -1,5 +1,11 @@
 # TODO
 
+**Overview.**
+- [Output](#output)
+- [Tests](#tests)
+- [Optimization](#optimization)
+- [Package Structure](#package-structure)
+
 ## Output
 
 It would be nicer to specify the output file as a command line parameter, s.t. the standard output can be used to display progress and debug information during the program run.
@@ -17,3 +23,7 @@ TestingVector3........[FAILED]
 ## Optimization
 
 Speed up the rendering process. E.g. refer to `Hackers Delight` and see if we can speed up the computations.
+
+## Package Structure
+
+Find a good place for the `materials` Package.

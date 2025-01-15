@@ -45,15 +45,6 @@ Vector3 Raytracer::gammaSqrt(Vector3 v) {
     return Vector3(sqrt(v.x()), sqrt(v.y()), sqrt(v.z()));
 }
 
-Vector3 Raytracer::randomInUnitSphere() const {
-    Vector3 point;
-    do {
-        Vector3 randomPoint(Random::getInstance()->getNext(), Random::getInstance()->getNext(), Random::getInstance()->getNext());
-        point = (2 * randomPoint) - Vector3(1, 1, 1);
-    } while(point.length() * point.length() >= 1);
-    return point;
-}
-
 Vector3 Raytracer::color(const Ray& ray, const Hitable& world) const {
     static Vector3 v1(1, 1, 1);
     static Vector3 v2(0.5, 0.7, 1.0);
@@ -63,7 +54,7 @@ Vector3 Raytracer::color(const Ray& ray, const Hitable& world) const {
 
     HitRecord record = world.hit(ray, ktMin, ktMax);
     if(record.hit()) {
-        Vector3 target = record.point() + record.normal() + randomInUnitSphere();
+        Vector3 target = record.point() + record.normal() + Random::getInstance()->randomInUnitSphere();
         return 0.5 * color(Ray(record.point(), target-record.point()), world);
     } else {
         Vector3 direction = ray.direction().make_unit();

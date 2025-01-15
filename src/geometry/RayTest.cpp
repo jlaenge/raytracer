@@ -8,7 +8,62 @@ RayTest* RayTest::getInstance() {
 }
 
 void RayTest::run() {
+    testAttributes();
+    testAssignment();
     testTrace();
+}
+
+void RayTest::testAttributes() {
+    Ray r(Vector3(1, 2, 3), Vector3(4, 5, 6));
+    Vector3 origin = r.origin();
+    TestSuite::floatEqual(origin.x(), 1);
+    TestSuite::floatEqual(origin.y(), 2);
+    TestSuite::floatEqual(origin.z(), 3);
+
+    Vector3 direction = r.direction();
+    TestSuite::floatEqual(direction.x(), 4);
+    TestSuite::floatEqual(direction.y(), 5);
+    TestSuite::floatEqual(direction.z(), 6);
+}
+
+void RayTest::testAssignment() {
+    Ray r1(Vector3(1, 2, 3), Vector3(4, 5, 6));
+    Ray r2(Vector3(7, 8, 9), Vector3(10, 11, 12));
+
+    Vector3 origin1 = r1.origin();
+    TestSuite::floatEqual(origin1.x(), 1);
+    TestSuite::floatEqual(origin1.y(), 2);
+    TestSuite::floatEqual(origin1.z(), 3);
+    Vector3 direction1 = r1.direction();
+    TestSuite::floatEqual(direction1.x(), 4);
+    TestSuite::floatEqual(direction1.y(), 5);
+    TestSuite::floatEqual(direction1.z(), 6);
+    Vector3 origin2 = r2.origin();
+    TestSuite::floatEqual(origin2.x(), 7);
+    TestSuite::floatEqual(origin2.y(), 8);
+    TestSuite::floatEqual(origin2.z(), 9);
+    Vector3 direction2 = r2.direction();
+    TestSuite::floatEqual(direction2.x(), 10);
+    TestSuite::floatEqual(direction2.y(), 11);
+    TestSuite::floatEqual(direction2.z(), 12);
+
+    r2 = r1;
+    origin1 = r1.origin();
+    TestSuite::floatEqual(origin1.x(), 1);
+    TestSuite::floatEqual(origin1.y(), 2);
+    TestSuite::floatEqual(origin1.z(), 3);
+    direction1 = r1.direction();
+    TestSuite::floatEqual(direction1.x(), 4);
+    TestSuite::floatEqual(direction1.y(), 5);
+    TestSuite::floatEqual(direction1.z(), 6);
+    origin2 = r2.origin();
+    TestSuite::floatEqual(origin2.x(), 1);
+    TestSuite::floatEqual(origin2.y(), 2);
+    TestSuite::floatEqual(origin2.z(), 3);
+    direction2 = r2.direction();
+    TestSuite::floatEqual(direction2.x(), 4);
+    TestSuite::floatEqual(direction2.y(), 5);
+    TestSuite::floatEqual(direction2.z(), 6);
 }
 
 void RayTest::testTrace() {

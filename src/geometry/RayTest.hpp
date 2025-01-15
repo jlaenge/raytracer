@@ -12,6 +12,8 @@ public:
 private:
     static RayTest instance;
 
+    void testAttributes();
+    void testAssignment();
     void testTrace();
 
 };
