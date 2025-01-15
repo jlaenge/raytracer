@@ -15,6 +15,7 @@
 class Ray {
 
 public:
+    Ray() : origin_(), direction_() {}
     Ray(const Vector3& origin, const Vector3& direction) : origin_(origin), direction_(direction) {}
     virtual ~Ray() {}
 
